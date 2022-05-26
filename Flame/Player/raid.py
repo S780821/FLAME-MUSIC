@@ -6,7 +6,7 @@ import random
 from telethon import events
 from telethon import functions, types
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
-from Flame.data import RAID, REPLYRAID, DEADLYSPAM
+from Flame.data import RAID, REPLYRAID, FLAMESPAM
 from Flame.main import BOT
 from config import SUDO_USERS
 
@@ -49,7 +49,7 @@ async def spam(e):
             a = await e.get_reply_message()
             b = await e.client.get_entity(a.sender_id)
             g = b.id
-            if int(g) in DEADLYSPAM:
+            if int(g) in FLAMESPAM:
                 text = f"I can't raid on @deadly_spam_bot's Owner"
                 await e.reply(text, parse_mode=None, link_preview=None )
             elif int(g) == OWNER_ID:
@@ -122,7 +122,7 @@ async def _(e):
             umser = await e.client.get_entity(a.sender_id)
             user_idd = umser.id
             user_id = int(user_idd)
-            if int(user_id) in DEADLYSPAM:
+            if int(user_id) in FLAMESPAM:
                 text = f" can't raid on @deadly_spam_bot's Owner."
                 await e.reply(text, parse_mode=None, link_preview=None )
             elif int(user_id) == OWNER_ID:
@@ -187,7 +187,7 @@ async def _(event):
              user = str(Deadly[2])
              a = await event.client.get_entity(user)
              e = a.id
-             if int(e) in DEADLYSPAM:
+             if int(e) in FLAMESPAM:
                     text = f"I can't raid on @deadly_spam_bot's Owner"
                     await event.reply(text, parse_mode=None, link_preview=None )
              elif int(e) == OWNER_ID:
@@ -211,7 +211,7 @@ async def _(event):
                a = await event.get_reply_message()
                b = await event.client.get_entity(a.sender_id)
                e = b.id
-               if int(e) in DEADLYSPAM:
+               if int(e) in FLAMESPAM:
                        text = f"I can't raid on @deadly_spam_bot's Owner"
                        await event.reply(text, parse_mode=None, link_preview=None )
                elif int(e) == OWNER_ID:
