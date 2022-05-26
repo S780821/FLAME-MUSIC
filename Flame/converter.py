@@ -1,7 +1,7 @@
 import asyncio
 from os import path
 
-from Zaid.errors import FFmpegReturnCodeError
+from Flame.errors import FFmpegReturnCodeError
 
 
 async def convert(file_path: str) -> str:
