@@ -2,7 +2,7 @@ import asyncio
 from pyrogram import Client, filters
 from pyrogram.types import Dialog, Chat, Message
 from pyrogram.errors import UserAlreadyParticipant
-from modules.clientbot.clientbot import client as aditya
+from callsmusic.callsmusic import client as Bot
 from config import SUDO_USERS
 
 @Client.on_message(filters.command(["gcast", "broadcast"]))
