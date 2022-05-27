@@ -1,9 +1,8 @@
-import asyncio
-from pyrogram import Client, filters
-from pyrogram.types import Dialog, Chat, Message
+from pyrogram import filters
 from pyrogram.errors import UserAlreadyParticipant
-from callsmusic.callsmusic import client as Bot
+import asyncio
 from config import SUDO_USERS
+from Flame.main import Test, bot as Client
 
 @Client.on_message(filters.command(["gcast", "broadcast"]))
 async def broadcast(_, message: Message):
