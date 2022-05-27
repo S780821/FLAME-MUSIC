@@ -22,7 +22,7 @@ async def broadcast(_, message: Message):
                 await aditya.send_message(dialog.chat.id, lmao)
                 sent = sent+1
                 await wtf.edit(f"**🥀 𝐁𝐫𝐨𝐚𝐝𝐜𝐚𝐬𝐭𝐢𝐧𝐠 ...** \n\n**✔️ 𝐒𝐞𝐧𝐭 𝐓𝐨:** `{sent}` **𝐂𝐡𝐚𝐭𝐬** \n**❌ 𝐅𝐚𝐢𝐥𝐞𝐝 𝐈𝐧:** `{failed}` **𝐂𝐡𝐚𝐭𝐬**")
-                await asyncio.sleep(3)
+                await asyncio.sleep(2)
             except:
                 failed=failed+1
         await wtf.delete()
