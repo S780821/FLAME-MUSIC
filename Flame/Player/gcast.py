@@ -20,9 +20,9 @@ async def broadcast(_, message: Message):
             await wtf.edit("**__ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇssᴀɢᴇ ᴛᴏ ʙʀᴏᴀᴅᴄᴀsᴛ​ ʙᴀʙʏ__**")
             return
         lmao = message.reply_to_message.text
-        async for dialog in Anonymous.iter_dialogs():
+        async for dialog in bot.iter_dialogs():
             try:
-                await Anonymous.send_message(dialog.chat.id, lmao)
+                await bot.send_message(dialog.chat.id, lmao)
                 sent = sent+1
                 await wtf.edit(f"`ʙʀᴏᴀᴅᴄᴀsᴛɪɴɢ...` \n\n**ʙʀᴏᴀᴅᴄᴀsᴛᴇᴅ ᴛᴏ :** `{sent}` **ᴄʜᴀᴛs** \n**ꜰᴀɪʟᴇᴅ ɪɴ :** `{failed}` **ᴄʜᴀᴛs**")
                 await asyncio.sleep(0.3)
