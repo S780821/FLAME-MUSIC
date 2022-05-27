@@ -1,51 +1,31 @@
-from pyrogram import filters
-from pyrogram.errors import UserAlreadyParticipant
 import asyncio
+
+from pyrogram import Client, filters
+from pyrogram.types import Dialog, Chat, Message
+from pyrogram.errors import UserAlreadyParticipant
+
+from callsmusic.callsmusic import client as bot
 from config import SUDO_USERS
-from Flame.main import Test, bot as Client
 
-@Client.on_message(filters.command(["gcast", "broadcast"]))
-async def bye(client, message):
-    if message.from_user.id in SUDO_USERS:
-        lol = await message.reply("`Globally Broadcasting Msg...`")
+@Client.on_message(filters.command(["broadcast", "gcast"]))
+async def broadcast(_, message: Message):
+    await message.delete()
+    sent=0
+    failed=0
+    if message.from_user.id not in SUDO_USERS:
+        return
+    else:
+        wtf = await message.reply("`sᴛᴀʀᴛɪɴɢ ʙʀᴏᴀᴅᴄᴀsᴛ​ ʙᴀʙʏ...`")
         if not message.reply_to_message:
-            await lol.edit("Usage: /gcast for bot\n /agcast broadcast By assistant\n\n**Reply to any text message for gcast**")
+            await wtf.edit("**__ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇssᴀɢᴇ ᴛᴏ ʙʀᴏᴀᴅᴄᴀsᴛ​ ʙᴀʙʏ__**")
             return
-        msg = message.reply_to_message.text
-        sent=0
-        failed=0
-        for dialog in client.iter_dialogs():
+        lmao = message.reply_to_message.text
+        async for dialog in Anonymous.iter_dialogs():
             try:
-                await client.send_message(dialog.chat.id, msg)
-                sent += 1
-                await lol.edit(f"**Successfully Send Message To** `{sent}` **Group, Failed to Send Message To** `{failed}` **Group**")
+                await Anonymous.send_message(dialog.chat.id, lmao)
+                sent = sent+1
+                await wtf.edit(f"`ʙʀᴏᴀᴅᴄᴀsᴛɪɴɢ...` \n\n**ʙʀᴏᴀᴅᴄᴀsᴛᴇᴅ ᴛᴏ :** `{sent}` **ᴄʜᴀᴛs** \n**ꜰᴀɪʟᴇᴅ ɪɴ :** `{failed}` **ᴄʜᴀᴛs**")
+                await asyncio.sleep(0.3)
             except:
-                failed += 1
-                await lol.edit(f"**Successfully Send Message To** `{sent}` **Group, Failed to Send Message To** `{failed}` **Group**")
-            await asyncio.sleep(0.7)
-        await message.reply_text(f"**Send Message To** `{sent}` **Group, Failed to Send Message To** `{failed}` **Group**")
-
-
-
-
-
-@Test.on_message(filters.command(["broadcast_assistant", "agcast"]))
-async def bye(client: Test, message):
-    if message.from_user.id in SUDO_USERS:
-        lol = await message.reply("`Globally Broadcasting Msg...`")
-        if not message.reply_to_message:
-            await lol.edit("**Reply to any text message for gcast**")
-            return
-        msg = message.reply_to_message.text
-        sent=0
-        failed=0
-        for dialog in client.iter_dialogs():
-            try:
-                await client.send_message(dialog.chat.id, msg)
-                sent += 1
-                await lol.edit(f"**Successfully Send Message To** `{sent}` **Group, Failed to Send Message To** `{failed}` **Group**")
-            except:
-                failed += 1
-                await lol.edit(f"**Successfully Send Message To** `{sent}` **Group, Failed to Send Message To** `{failed}` **Group**")
-            await asyncio.sleep(0.7)
-        await message.reply_text(f"**Send Message To** `{sent}` **Group, Failed to Send Message To** `{failed}` **Group**")
+                failed=failed+1
+        await message.reply_text(f"**ʙʀᴏᴀᴅᴄᴀsᴛᴇᴅ sᴜᴄᴄᴇssꜰᴜʟʟʏ** \n\n**ʙʀᴏᴀᴅᴄᴀsᴛᴇᴅ ᴛᴏ :** `{sent}` **ᴄʜᴀᴛs** \n**ꜰᴀɪʟᴇᴅ ɪɴ​ :** `{failed}` **ᴄʜᴀᴛs**")
