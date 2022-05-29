@@ -6,13 +6,162 @@ import random
 from telethon import events
 from telethon import functions, types
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
-from Flame.data import RAID, REPLYRAID, FLAMESPAM
+from Flame.data import RAID, REPLYRAID, FLAMESPAM, PORMS, SHAYRI
 from Flame.main import BOT
 from config import SUDO_USERS
 
 OWNER_ID = SUDO_USERS
 que = {}
 hl = '/'
+
+
+@BOT.on(events.NewMessage(incoming=True, pattern=r"\%sshayri(?: |$)(.*)" % hl))
+async def spam(e):
+    usage = "𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲 = 𝐒𝐡𝐚𝐲𝐫𝐢\n\nCommand:\n\n.shayri<count> <Username of User>\n\n.raid <count> <reply to a User>\n\nCount must be a integer."
+    if e.sender_id in SUDO_USERS:
+        if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):
+            return await e.reply(usage, parse_mode=None, link_preview=None )
+        Deadly = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
+        bitxh = await e.get_reply_message()
+        if len(Deadly) == 2:
+            user = str(Deadly[1])
+            a = await e.client.get_entity(user)
+            g = a.id
+            if int(g) in Deadly:
+                text = f"I can't raid on @deadly_spam_bot's Owner"
+                await e.reply(text, parse_mode=None, link_preview=None )
+            elif int(g) == OWNER_ID:
+                text = f"This guy is a owner Of this Bots."
+                await e.reply(text, parse_mode=None, link_preview=None )
+            elif int(g) in SUDO_USERS:
+                text = f"This guy is a sudo user."
+                await e.reply(text, parse_mode=None, link_preview=None )
+            else:
+                c = a.first_name
+                username = f"[{c}](tg://user?id={g})"
+                counter = int(Deadly[0])
+                for _ in range(counter):
+                    reply = random.choice(SHAYRI)
+                    caption = f"{username} {reply}"
+                    async with e.client.action(e.chat_id, "typing"):
+                        await e.client.send_message(e.chat_id, caption)
+                        await asyncio.sleep(0.5)
+        elif e.reply_to_msg_id:             
+            a = await e.get_reply_message()
+            b = await e.client.get_entity(a.sender_id)
+            g = b.id
+            if int(g) in FLAMESPAM:
+                text = f"I can't raid on @deadly_spam_bot's Owner"
+                await e.reply(text, parse_mode=None, link_preview=None )
+            elif int(g) == OWNER_ID:
+                text = f"This guy is a owner Of this Bots."
+                await e.reply(text, parse_mode=None, link_preview=None )
+            elif int(g) in SUDO_USERS:
+                text = f"This guy is a sudo user."
+                await e.reply(text, parse_mode=None, link_preview=None )
+            else:
+                c = b.first_name
+                counter = int(Deadly[0])
+                username = f"[{c}](tg://user?id={g})"
+                for _ in range(counter):
+                    reply = random.choice(SHAYRI)
+                    caption = f"{username} {reply}"
+                    async with e.client.action(e.chat_id, "typing"):
+                        await e.client.send_message(e.chat_id, caption)
+                        await asyncio.sleep(0.3)
+        else:
+            await e.reply(usage)
+
+
+
+@BOT.on(events.NewMessage(incoming=True))
+async def _(event):
+    global que
+    queue = que.get(event.sender_id)
+    if not queue:
+        return
+    async with event.client.action(event.chat_id, "typing"):
+        await asyncio.sleep(0.2)
+    async with event.client.action(event.chat_id, "typing"):
+        await event.client.send_message(
+            entity=event.chat_id,
+            message="""{}""".format(random.choice(REPLYRAID)),
+            reply_to=event.message.id,
+        )
+
+@BOT.on(events.NewMessage(incoming=True, pattern=r"\%sporms(?: |$)(.*)" % hl))
+async def spam(e):
+    usage = "𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲 = 𝐏𝐨𝐫𝐦𝐬\n\nCommand:\n\n.porms <count> <Username of User>\n\n.porms <count> <reply to a User>\n\nCount must be a integer."
+    if e.sender_id in SUDO_USERS:
+        if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):
+            return await e.reply(usage, parse_mode=None, link_preview=None )
+        Deadly = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
+        bitxh = await e.get_reply_message()
+        if len(Deadly) == 2:
+            user = str(Deadly[1])
+            a = await e.client.get_entity(user)
+            g = a.id
+            if int(g) in Deadly:
+                text = f"I can't raid on @deadly_spam_bot's Owner"
+                await e.reply(text, parse_mode=None, link_preview=None )
+            elif int(g) == OWNER_ID:
+                text = f"This guy is a owner Of this Bots."
+                await e.reply(text, parse_mode=None, link_preview=None )
+            elif int(g) in SUDO_USERS:
+                text = f"This guy is a sudo user."
+                await e.reply(text, parse_mode=None, link_preview=None )
+            else:
+                c = a.first_name
+                username = f"[{c}](tg://user?id={g})"
+                counter = int(Deadly[0])
+                for _ in range(counter):
+                    reply = random.choice(PORMS)
+                    caption = f"{username} {reply}"
+                    async with e.client.action(e.chat_id, "typing"):
+                        await e.client.send_message(e.chat_id, caption)
+                        await asyncio.sleep(0.5)
+        elif e.reply_to_msg_id:             
+            a = await e.get_reply_message()
+            b = await e.client.get_entity(a.sender_id)
+            g = b.id
+            if int(g) in FLAMESPAM:
+                text = f"I can't raid on @deadly_spam_bot's Owner"
+                await e.reply(text, parse_mode=None, link_preview=None )
+            elif int(g) == OWNER_ID:
+                text = f"This guy is a owner Of this Bots."
+                await e.reply(text, parse_mode=None, link_preview=None )
+            elif int(g) in SUDO_USERS:
+                text = f"This guy is a sudo user."
+                await e.reply(text, parse_mode=None, link_preview=None )
+            else:
+                c = b.first_name
+                counter = int(Deadly[0])
+                username = f"[{c}](tg://user?id={g})"
+                for _ in range(counter):
+                    reply = random.choice(PORMS)
+                    caption = f"{username} {reply}"
+                    async with e.client.action(e.chat_id, "typing"):
+                        await e.client.send_message(e.chat_id, caption)
+                        await asyncio.sleep(0.3)
+        else:
+            await e.reply(usage)
+
+
+
+@BOT.on(events.NewMessage(incoming=True))
+async def _(event):
+    global que
+    queue = que.get(event.sender_id)
+    if not queue:
+        return
+    async with event.client.action(event.chat_id, "typing"):
+        await asyncio.sleep(0.2)
+    async with event.client.action(event.chat_id, "typing"):
+        await event.client.send_message(
+            entity=event.chat_id,
+            message="""{}""".format(random.choice(REPLYPORMS)),
+            reply_to=event.message.id,
+        )
 
 @BOT.on(events.NewMessage(incoming=True, pattern=r"\%sraid(?: |$)(.*)" % hl))
 async def spam(e):
