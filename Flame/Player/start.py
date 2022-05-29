@@ -33,6 +33,7 @@ SPAM_TEXT = """
 \u2022 /spam <Count> Text To Spam Your Message.
 \u2022 /fspam <Count> Text for spamming.
 \u2022 /delayspam <Count> Text for Spamming.
+\u2022 /shayri <Count> Username/Reply to user
 """
 
 RAID_TEXT = """
