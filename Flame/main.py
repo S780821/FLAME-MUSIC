@@ -16,6 +16,14 @@ BOT = Client(
     plugins={"root": "Flame.Player"},
 )
 
+bot = Client(
+    ":memory:",
+    API_ID,
+    API_HASH,
+    bot_token=BOT_TOKEN,
+    plugins={"root": "Flame.Player"},
+)
+
 
 if not SESSION_NAME:
    ASS_CLI_1 = None
