@@ -3,7 +3,6 @@ import asyncio
 import sys
 import git
 import heroku3
-from Flame.main import bot
 from Flame.main import BOT
 from config import OWNER_ID, SUDO_USERS, HEROKU_APP_NAME, HEROKU_API_KEY, ALIVE_IMG as Flame_PIC
 from telethon.tl.functions.users import GetFullUserRequest
@@ -78,4 +77,3 @@ async def ping(e):
         await event.edit(f"🎉 🇵 🇴 🇳 🇬 !\n\n♡︎ `{ms}` 𝗺𝘀 ♡︎")
         
         
-
