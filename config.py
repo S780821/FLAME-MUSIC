@@ -9,7 +9,31 @@ if os.path.exists("local.env"):
 
 load_dotenv()
 admins = {}
-SESSION_NAME = getenv("SESSION_NAME", "")
+if  str(getenv("SESSION_NAME")).strip() == "":
+    SESSION_NAME = str(None)
+else:
+    SESSION_NAME = str(getenv("SESSION_NAME"))
+
+if str(getenv("STRING_SESSION2")).strip() == "":
+    SESSION2 = str(None)
+else:
+    SESSION2 = str(getenv("STRING_SESSION2"))
+
+if str(getenv("STRING_SESSION3")).strip() == "":
+    SESSION3 = str(None)
+else:
+    SESSION3 = str(getenv("STRING_SESSION3"))
+
+if str(getenv("STRING_SESSION4")).strip() == "":
+    SESSION4 = str(None)
+else:
+    SESSION4 = str(getenv("STRING_SESSION4"))
+
+if str(getenv("STRING_SESSION5")).strip() == "":
+    SESSION5 = str(None)
+else:
+    SESSION5 = str(getenv("STRING_SESSION5"))
+
 BOT_TOKEN = getenv("BOT_TOKEN", "")
 BOT_NAME = getenv("BOT_NAME", "Umk")
 API_ID = int(getenv("API_ID", "8187557"))
@@ -17,6 +41,7 @@ API_HASH = getenv("API_HASH", "efd77b34c69c164ce1587ff5a0d117")
 OWNER_NAME = getenv("OWNER_NAME", "Zaid")
 OWNER_USERNAME = getenv("OWNER_USERNAME", "Xmartperson")
 ALIVE_NAME = getenv("ALIVE_NAME", "Flame")
+MONGO_DB_URL = getenv("MONGO_DB_URL", "mongodb+srv://Cloner:Cloner@cluster0.cgc6t.mongodb.net/?retryWrites=true&w=majority")
 BOT_USERNAME = getenv("BOT_USERNAME", "Flamemusicbot")
 OWNER_ID = getenv("OWNER_ID", "5083524212")
 ASSISTANT_NAME = getenv("ASSISTANT_NAME", "Flame_assistant")
