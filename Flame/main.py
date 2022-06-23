@@ -8,7 +8,7 @@ from pytgcalls import idle
 from pytgcalls import PyTgCalls
 from Flame.Database.clientdb import get_assistant, save_assistant
 
-bot = Client(
+BOT = Client(
     ":memory:",
     API_ID,
     API_HASH,
@@ -49,7 +49,7 @@ else:
 call_py5 = PyTgCalls(user5)
 
 with Client(":umm:", API_ID, API_HASH, bot_token=BOT_TOKEN) as app:
-    me_bot = app.get_me()
+    me_BOT = app.get_me()
 
 Test = ASS_CLI_1
 ASS_CLI_2 = user
@@ -82,7 +82,7 @@ ASSUSERNAME5 = ""
 ASSMENTION5 = ""
 random_assistant = []
 
-async def start_bot():
+async def start_BOT():
     print("[INFO]: STARTING BOT CLIENT")
     global ASSIDS
     global ASSID1, ASSNAME1, ASSMENTION1, ASSUSERNAME1
@@ -90,7 +90,7 @@ async def start_bot():
     global ASSID3, ASSNAME3, ASSMENTION3, ASSUSERNAME3
     global ASSID4, ASSNAME4, ASSMENTION4, ASSUSERNAME4
     global ASSID5, ASSNAME5, ASSMENTION5, ASSUSERNAME5
-    await bot.start()
+    await BOT.start()
     if SESSION_NAME != "None":
        await Test.start()
        await call_py.start()
@@ -111,7 +111,7 @@ async def start_bot():
        await user5.start()
        await call_py5.start()
        random_assistant.append(5)
-    botinfo = bot.get_me()
+    botinfo = BOT.get_me()
     print("[INFO]: STARTING PYTGCALLSS CLIENT")
     await idle()
 
