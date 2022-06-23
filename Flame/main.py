@@ -8,7 +8,7 @@ from pytgcalls import idle
 from pytgcalls import PyTgCalls
 from Flame.Database.clientdb import get_assistant, save_assistant
 
-bot = Client(
+BOT = Client(
     ":memory:",
     API_ID,
     API_HASH,
