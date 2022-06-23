@@ -1,7 +1,7 @@
 from Flame.Cache.admins import admins
 from Flame.main import call_py
 from pyrogram import filters
-from Flame.main import bot as Client
+from Flame.main import BOT as Client
 from Flame.decorators import authorized_users_only
 from Flame.filters import command, other_filters
 from Flame.queues import QUEUE, clear_queue
