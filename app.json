@@ -9,22 +9,6 @@
             "description": "fill with the pyrogram session string from account",
             "required": true
         },
-        "SESSION2": {
-            "description": "fill with the pyrogram session string from account",
-            "required": false
-        },
-        "SESSION3": {
-            "description": "fill with the pyrogram session string from account",
-            "required": false
-        },
-        "SESSION4": {
-            "description": "fill with the pyrogram session string from account",
-            "required": false
-        },
-        "SESSION5": {
-            "description": "fill with the pyrogram session string from account",
-            "required": false
-        }
         "ASSISTANT_NAME": {
             "description": "fill with your telegram id as the owner of the bot",
             "required": true,
@@ -55,11 +39,6 @@
             "required": false,
             "value": "Flame_updates"
         },
-        "HEROKU_MODE": {
-            "description": "Warning ⚠️! don't Change this, if you change this it will cause of banning your heroku account!",
-            "required": false,
-            "value": "ENABLE"
-        }
         "SUDO_USERS": {
             "description": "fill with the user id who can access all function in your bot (separate with space).",
             "required": true,
@@ -70,11 +49,6 @@
             "required": true,
             "value": "540000"
         },
-        "MONGO_DB_URL": {
-            "description": "fill there mongo Database url else don't change",
-            "required": true,
-            "value": "mongodb+srv://user@pass"
-        }
         "BOT_TOKEN": {
             "description": "fill with your bot token get from @BotFather on telegram",
             "required": true,
