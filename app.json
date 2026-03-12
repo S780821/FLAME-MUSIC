@@ -1,0 +1,74 @@
+{
+    "name": "ғʟᴀᴍᴇ Vc Player",
+    "description": "Music allow you to stream music trought the telegram voice chat feature.",
+    "keywords": ["FLAME", "FLAME-MUSIC", "music", "voice chat", "telegram", "Rocks", "RockMusic", "Private Music"],
+    "repository": "https://github.com/S780821/FLAME-MUSIC",
+  "stack": "container",
+    "env": {
+        "SESSION_NAME": {
+            "description": "fill with the pyrogram session string from account",
+            "required": true
+        },
+        "ASSISTANT_NAME": {
+            "description": "fill with your telegram id as the owner of the bot",
+            "required": true,
+            "value": "Flame_assistant"
+        },
+        "BOT_USERNAME": {
+            "description": "fill with telegram id of account",
+            "required": true,
+            "value": "flamemusicbot"
+        },
+        "API_ID": {
+            "description": "your Api ID from my.telegram.org/apps",
+            "required": true,
+            "value": "6435225"
+        },
+        "API_HASH": {
+            "description": "your Api Hash from my.telegram.org/apps",
+            "required": false,
+            "value": "4e984ea35f854762dcde906dce426c2d"
+        },
+        "GROUP_SUPPORT": {
+            "description": "Ur Support Group Username",
+            "required": false,
+            "value": "Flame_Project"
+        },
+        "UPDATES_CHANNEL": {
+            "description": "Your Updates Channel",
+            "required": false,
+            "value": "Flame_updates"
+        },
+        "SUDO_USERS": {
+            "description": "fill with the user id who can access all function in your bot (separate with space).",
+            "required": true,
+            "value": "1669178360"
+        },
+        "DURATION_LIMIT": {
+            "description": "filled, don't change this !",
+            "required": true,
+            "value": "540000"
+        },
+        "BOT_TOKEN": {
+            "description": "fill with your bot token get from @BotFather on telegram",
+            "required": true,
+            "value": ""
+        }
+
+    },
+  "buildpacks": [
+          {
+              "url": "heroku/python"
+          },
+          {
+              "url": "https://github.com/S780821/FFmpeg"
+          }
+      ],
+      "formation": {
+          "worker": {
+              "quantity": 1,
+              "size": "free"
+          }
+      },
+      "stack": "container"
+  }
