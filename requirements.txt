@@ -2,9 +2,7 @@ TgCrypto-pyrofork==1.2.8
 asyncio
 ffmpeg-python
 py-tgcalls==1.2.9
-# py-tgcalls==1.2.9 expects `InputMode`, which was removed in ntgcalls 2.x.
-# Pin to the known-compatible 1.x build so deployments can't resolve to 2.x.
-ntgcalls==1.0.1
+ntgcalls
 pyrofork==2.3.69
 yt-dlp
 youtube-search-python
