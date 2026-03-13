@@ -1,8 +1,11 @@
 FROM node:20-slim AS node-builder
-FROM python:3.11-slim
+FROM python:3.13-slim
 
-RUN apt-get update && apt-get install -y \
-    ffmpeg libopus-dev libsndfile1-dev \
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ffmpeg \
+    libopus-dev \
+    libsndfile1-dev \
+    git \
     curl ca-certificates gnupg \
     && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
     && apt-get install -y nodejs \
@@ -13,5 +16,5 @@ COPY . /app
 WORKDIR /app
 
 RUN pip3 install --upgrade pip
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 CMD ["python3", "main.py"]
