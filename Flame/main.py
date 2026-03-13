@@ -2,6 +2,7 @@ import os
 import sys
 import random
 import asyncio
+import time
 from telethon.errors import FloodWaitError
 import telethon.utils
 from telethon import TelegramClient, events
@@ -30,7 +31,9 @@ try:
     print("✅ Bot logged in successfully!")
 except FloodWaitError as e:
     print(f"⏳ FloodWaitError: Waiting {e.seconds} seconds...")
-    asyncio.run(asyncio.sleep(e.seconds + 10))  # extra 10s safety
+    # Avoid asyncio.run() here, since closing a temporary loop at import time
+    # can interfere with Telethon's own loop resolution in the main thread.
+    time.sleep(e.seconds + 10)  # extra 10s safety
     BOT = TelegramClient('BOT', API_ID, API_HASH).start(bot_token=BOT_TOKEN)
     print("✅ Bot logged in after flood wait!")
 except Exception as e:
