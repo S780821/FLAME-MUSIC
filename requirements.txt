@@ -1,7 +1,7 @@
 TgCrypto-pyrofork==1.2.8   # or latest from https://pypi.org/project/TgCrypto-pyrofork/
 asyncio
 ffmpeg-python
-py-tgcalls==2.2.11   # latest stable as of March 2026
+pytgcalls==3.0.0.dev24   # latest stable as of March 2026
 pyrofork==2.3.69
 git+https://github.com/S780821/yt-dlp
 youtube-search-python
