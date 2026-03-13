@@ -1,0 +1,8 @@
+[phases.setup]
+aptPkgs = ['ffmpeg', 'libopus-dev', 'libsndfile1-dev']
+
+[phases.build]
+cmds = ['pip install --no-cache-dir -r requirements.txt']
+
+[deploy]
+startCommand = 'python3 main.py'
