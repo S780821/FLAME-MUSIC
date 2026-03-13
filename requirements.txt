@@ -1,4 +1,4 @@
-# TgCrypto==1.2.5   ← comment this
+TgCrypto==1.2.5   ← comment this
 asyncio
 ffmpeg-python
 py-tgcalls==2.2.11   # latest stable as of March 2026
