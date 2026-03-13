@@ -31,7 +31,12 @@ def _require_any_env(*names: str) -> str:
     )
 
 admins = {}
-SESSION_NAME = _require_any_env("SESSION_NAME", "STRING_SESSION", "SESSION_STRING")
+SESSION_NAME = _require_any_env(
+    "SESSION_NAME",
+    "STRING_SESSION",
+    "SESSION_STRING",
+    "SESSION",
+)
 BOT_TOKEN = _require_env("BOT_TOKEN")
 BOT_NAME = getenv("BOT_NAME", "Flamecircle_bot")
 API_ID = int(getenv("API_ID", "8201417"))
