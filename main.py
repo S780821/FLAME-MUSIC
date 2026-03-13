@@ -1,30 +1,36 @@
 import asyncio
-from pytgcalls import PyTgCalls, idle
+from pyrogram import Client, idle
+from pytgcalls import PyTgCalls
 from pytgcalls.types import AudioPiped, HighQualityAudio
+
+# Import your existing objects from the Flame package
 from Flame.main import call_py, bot, BOT
 
-app = PyTgCalls(client)   # client = your Pyrogram Client instance
-await app.start()
-
-# Example: play audio file or yt stream
-await app.play(
-    chat_id,
-    AudioPiped(
-        path_or_url,                   # e.g. "song.mp3" or "https://..."
-        audio_parameters=HighQualityAudio()
-    )
-)
+# ====================== MODERN PYTGCALLS SETUP ======================
+# Create PyTgCalls instance (new v2+ way)
+pytgcalls = PyTgCalls(bot)   # Pass your Pyrogram Client (bot) here
 
 async def start_bot():
-    print("[INFO]: STARTING BOT CLIENT")
+    print("🔥 [INFO] Starting Pyrogram Bot Client...")
     await bot.start()
-    print("[INFO]: STARTING PYTGCALLSS CLIENT")
-    await call_py.start()
+
+    print("🎵 [INFO] Starting PyTgCalls (v2.2.x) Client...")
+    await pytgcalls.start()
+
+    print("✅ FLAME MUSIC BOT IS ONLINE!")
+
+    # Keep the bot running
     await idle()
-    print("[INFO]: STOPPING BOT & USERBOT")
+
+    # Clean shutdown (optional)
+    print("🛑 Shutting down...")
+    await pytgcalls.stop()
     await bot.stop()
 
 
-loop = asyncio.get_event_loop()
-loop.run_until_complete(start_bot())
-BOT.run_until_disconnected()
+if __name__ == "__main__":
+    # This is the ONLY correct way to run async code at top level
+    asyncio.run(start_bot())
+
+    # If you have any Telethon/BOT part left (old style)
+    # BOT.run_until_disconnected()   # ← you can keep this if needed, but asyncio.run is cleaner
