@@ -1,6 +1,19 @@
 import asyncio
-from pytgcalls import PyTgCalls, StreamType, idle
+from pytgcalls import PyTgCalls, idle
+from pytgcalls.types import AudioPiped, HighQualityAudio
 from Flame.main import call_py, bot, BOT
+
+app = PyTgCalls(client)   # client = your Pyrogram Client instance
+await app.start()
+
+# Example: play audio file or yt stream
+await app.play(
+    chat_id,
+    AudioPiped(
+        path_or_url,                   # e.g. "song.mp3" or "https://..."
+        audio_parameters=HighQualityAudio()
+    )
+)
 
 async def start_bot():
     print("[INFO]: STARTING BOT CLIENT")
