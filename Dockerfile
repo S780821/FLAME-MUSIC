@@ -1,5 +1,5 @@
 FROM node:20-slim AS node-builder
-FROM python:3.13-slim
+FROM python:3.11-slim
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ffmpeg \
