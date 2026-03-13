@@ -8,9 +8,18 @@ if os.path.exists("local.env"):
     load_dotenv("local.env")
 
 load_dotenv()
+
+def _require_env(name: str, *, fallback: str | None = None) -> str:
+    value = getenv(name, fallback)
+    if value is None or not str(value).strip():
+        raise RuntimeError(
+            f"Missing required environment variable '{name}'. "
+            "Set it in your Railway/hosting variables or .env file."
+        )
+    return value.strip()
 admins = {}
-SESSION_NAME = getenv("SESSION_NAME", "BQAHQiw0QYyBC1Z27RNxDUExj0wm-ibSuWlXWTNb65I4PyzUD8QvC5TqVPdbmcNk0dIKy5TVzb3yGNx3asxVw-2wj9euifBlnWVWZ4CIdsffEA2h0HgxF40k66PJA_xS3bbpJAw--8Yrrjtz362FzKwCmuoxcKd8onklWX9fBvGhJ99nNEq8lpNCRsxEpmw7qr8gOw4b503HHXHnU9IZEmFCmY2CC47-Ec8HzCCXOxBEJEnOoA9Gf-431tOOn_13c9QF7AI1oHxUC5-5HQyxCjnyK8SuofRX8gjBbtze6xfIMBFp9NH6ev4i1GTjy9BNGKy8C-WBgV2pI-pOw3pttpmZAAAAATUTEHYA")
-BOT_TOKEN = getenv("BOT_TOKEN", "5300563520:AAGcZ1kQeipKuu3rAW7I7SvmuAx0f67YDN4")
+SESSION_NAME = _require_env("SESSION_NAME", fallback=getenv("STRING_SESSION"))
+BOT_TOKEN = _require_env("BOT_TOKEN")
 BOT_NAME = getenv("BOT_NAME", "Flamecircle_bot")
 API_ID = int(getenv("API_ID", "8201417"))
 API_HASH = getenv("API_HASH", "4de3ab03e330698fc1a8fbf2c85b3997")
@@ -23,7 +32,7 @@ ASSISTANT_NAME = getenv("ASSISTANT_NAME", "Checkbt5")
 GROUP_SUPPORT = getenv("GROUP_SUPPORT", "Flame_project")
 UPDATES_CHANNEL = getenv("UPDATES_CHANNEL", "Flame_Updates")
 HEROKU_APP_NAME = getenv("HEROKU_APP_NAME")
-HEROKU_API_KEY = getenv("UPDATES_CHANNEL", "HEROKU_API_KEY")
+HEROKU_API_KEY = getenv("HEROKU_API_KEY")
 SUDO_USERS = list(map(int, getenv("SUDO_USERS", "5083524212").split()))
 COMMAND_PREFIXES = list(getenv("COMMAND_PREFIXES", "/ ! .").split())
 ALIVE_IMG = getenv("ALIVE_IMG", "https://telegra.ph/file/2c23f012984fa91267146.jpg")
