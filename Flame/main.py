@@ -23,11 +23,20 @@ bot = Client(
     plugins={"root": "Flame.Player"},
 )
 
-BOT = TelegramClient('BOT', API_ID, API_HASH).start(bot_token=BOT_TOKEN)
-except FloodWaitError as e:
-    print(f"⏳ FloodWaitError: Sleeping {e.seconds} seconds...")
-    asyncio.run(asyncio.sleep(e.seconds + 5))  # extra 5s safety
+# ================== BOT CLIENT WITH FLOOD PROTECTION ==================
+BOT = None
+try:
     BOT = TelegramClient('BOT', API_ID, API_HASH).start(bot_token=BOT_TOKEN)
+    print("✅ Bot logged in successfully!")
+except FloodWaitError as e:
+    print(f"⏳ FloodWaitError: Waiting {e.seconds} seconds...")
+    asyncio.run(asyncio.sleep(e.seconds + 10))  # extra 10s safety
+    BOT = TelegramClient('BOT', API_ID, API_HASH).start(bot_token=BOT_TOKEN)
+    print("✅ Bot logged in after flood wait!")
+except Exception as e:
+    print(f"❌ Unexpected error starting BOT: {e}")
+    raise
+# =====================================================================
 
 
 user = Client(
