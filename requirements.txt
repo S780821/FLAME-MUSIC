@@ -1,4 +1,4 @@
-TgCrypto==1.2.5   ← comment this
+TgCrypto-pyrofork==1.2.8   # or latest from https://pypi.org/project/TgCrypto-pyrofork/
 asyncio
 ffmpeg-python
 py-tgcalls==2.2.11   # latest stable as of March 2026
