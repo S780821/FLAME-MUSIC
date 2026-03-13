@@ -1,7 +1,7 @@
 TgCrypto-pyrofork==1.2.8
 asyncio
 ffmpeg-python
-pytgcalls==2.2.11
+py-tgcalls==2.2.11
 pyrofork==2.3.69
 yt-dlp
 youtube-search-python
