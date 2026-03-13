@@ -40,7 +40,7 @@ async def start_bot():
     print("🔥 Starting Pyrogram Bot...")
     await bot.start()
 
-    print("🎵 Starting PyTgCalls v2.2.11...")
+    print("🎵 Starting PyTgCalls...")
     await pytgcalls.start()
 
     print("✅ FLAME MUSIC BOT IS NOW ONLINE & READY!")
