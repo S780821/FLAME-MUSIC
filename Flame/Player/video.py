@@ -11,7 +11,7 @@ from Flame.main import call_py, Test as user
 from Flame.main import bot as Client
 from pyrogram.errors import UserAlreadyParticipant, UserNotParticipant
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
-from pytgcalls import StreamType
+from pytgcalls.types import StreamType
 from pytgcalls.types.input_stream import AudioVideoPiped
 from pytgcalls.types.input_stream.quality import (
     HighQualityAudio,
