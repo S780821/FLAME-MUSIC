@@ -3,7 +3,7 @@ asyncio
 ffmpeg-python
 py-tgcalls==2.2.11   # latest stable as of March 2026
 pyrogram==1.4.16
-git+https://github.com/S780821/yt-dlp@master
+git+https://github.com/S780821/yt-dlp
 youtube-search-python
 youtube-search
 python-dotenv
