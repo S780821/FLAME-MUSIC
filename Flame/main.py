@@ -2,6 +2,7 @@ import os
 import sys
 import random
 import asyncio
+from telethon.errors import FloodWaitError
 import telethon.utils
 from telethon import TelegramClient, events
 from config import API_HASH, API_ID, BOT_TOKEN, SESSION_NAME
@@ -23,6 +24,11 @@ bot = Client(
 )
 
 BOT = TelegramClient('BOT', API_ID, API_HASH).start(bot_token=BOT_TOKEN)
+except FloodWaitError as e:
+    print(f"⏳ FloodWaitError: Sleeping {e.seconds} seconds...")
+    asyncio.run(asyncio.sleep(e.seconds + 5))  # extra 5s safety
+    BOT = TelegramClient('BOT', API_ID, API_HASH).start(bot_token=BOT_TOKEN)
+
 
 user = Client(
     SESSION_NAME,
