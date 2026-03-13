@@ -4,9 +4,14 @@ RUN apt update && apt upgrade -y
 RUN apt install python3-pip -y
 RUN apt install ffmpeg -y
 
-RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
+# Use official Node image as base (includes npm & cleans up layers better)
+FROM node:20-slim
+
+# Or if you want to keep your Debian base:
+FROM python:3.11-slim-bookworm  (or whatever your current base is)
+RUN apt-get update && apt-get install -y curl ca-certificates gnupg
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
 RUN apt-get install -y nodejs
-RUN npm i -g npm
 
 RUN mkdir /app/
 COPY . /app
