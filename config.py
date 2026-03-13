@@ -17,8 +17,21 @@ def _require_env(name: str, *, fallback: str | None = None) -> str:
             "Set it in your Railway/hosting variables or .env file."
         )
     return value.strip()
+
+def _require_any_env(*names: str) -> str:
+    for name in names:
+        value = getenv(name)
+        if value is not None and str(value).strip():
+            return value.strip()
+
+    choices = " or ".join(f"'{name}'" for name in names)
+    raise RuntimeError(
+        f"Missing required environment variable {choices}. "
+        "Set one of them in your Railway/hosting variables or .env file."
+    )
+
 admins = {}
-SESSION_NAME = _require_env("SESSION_NAME", fallback=getenv("STRING_SESSION"))
+SESSION_NAME = _require_any_env("SESSION_NAME", "STRING_SESSION", "SESSION_STRING")
 BOT_TOKEN = _require_env("BOT_TOKEN")
 BOT_NAME = getenv("BOT_NAME", "Flamecircle_bot")
 API_ID = int(getenv("API_ID", "8201417"))
