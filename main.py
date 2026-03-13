@@ -1,5 +1,5 @@
 import asyncio
-from pytgcalls import idle
+from pytgcalls import PyTgCalls, StreamType, idle
 from Flame.main import call_py, bot, BOT
 
 async def start_bot():
