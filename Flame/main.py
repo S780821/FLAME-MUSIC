@@ -5,8 +5,14 @@ import asyncio
 import telethon.utils
 from telethon import TelegramClient, events
 from config import API_HASH, API_ID, BOT_TOKEN, SESSION_NAME
-from pyrogram import Client
+from pyrogram import Client, filters
 from pytgcalls import PyTgCalls
+
+if not hasattr(filters, "edited"):
+    filters.edited = filters.create(
+        lambda _, __, message: bool(getattr(message, "edit_date", None))
+    )
+
 
 bot = Client(
     ":memory:",
