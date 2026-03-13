@@ -64,6 +64,17 @@
 
 ## 🔎 ꜱᴜᴘᴘᴏʀᴛ ɪɴʟɪɴᴇ ꜱᴇᴀʀᴄʜ
 
+## Troubleshooting (Railway crash: `AccessTokenExpiredError`)
+
+If logs show `telethon.errors.rpcerrorlist.AccessTokenExpiredError: Bot token expired`, your `BOT_TOKEN` is invalid or has been regenerated.
+
+1. Open [@BotFather](https://t.me/BotFather) and run `/token` for your bot to generate a fresh token.
+2. In Railway, go to your service variables and update `BOT_TOKEN` with the new value.
+3. Confirm `API_ID`, `API_HASH`, and `SESSION_NAME` (or `STRING_SESSION`) are set correctly.
+4. Redeploy/restart the service.
+
+This repository now validates required env vars at startup, so missing values fail fast with a clear message.
+
 ## ᴅᴇᴘʟᴏʏ
 
 ᴛᴏ ʙᴇ ꜱᴀꜰᴇ ꜰᴏʀᴋ ᴛʜɪꜱ ʀᴇᴘᴏ ᴀɴᴅ ᴛʜᴇɴ ᴘʀᴇꜱꜱ ᴅᴇᴘʟᴏʏ ʙᴜᴛᴛᴏɴ ꜰʀᴏᴍ ᴛʜᴇ ꜰᴏʀᴋᴇᴅ ʀᴇᴘᴏ 
