@@ -16,5 +16,5 @@ COPY . /app
 WORKDIR /app
 
 RUN pip3 install --upgrade pip
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir --force-reinstall -r requirements.txt
 CMD ["python3", "main.py"]
