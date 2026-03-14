@@ -2,9 +2,8 @@ TgCrypto-pyrofork==1.2.8
 asyncio
 ffmpeg-python
 py-tgcalls==1.2.9
-# py-tgcalls 1.x imports InputMode from ntgcalls, which was removed in ntgcalls 2.x.
-ntgcalls<2
-pyrofork==2.3.69
+ntgcalls==1.2.9
+pyrofork
 yt-dlp
 youtube-search-python
 youtube-search
@@ -12,14 +11,10 @@ python-dotenv
 dnspython
 gitpython
 aiofiles
-aiohttp
 requests
 pillow
-heroku3
 motor
-psutil
 future
-wget
 pyyaml==5.3.1
 telethon
 speedtest-cli
