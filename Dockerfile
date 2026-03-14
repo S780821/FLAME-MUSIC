@@ -1,5 +1,8 @@
 FROM node:20-slim AS node-builder
-FROM python:3.11-slim
+FROM python:3.9
+
+RUN pip uninstall ntgcalls -y
+RUN pip install ntgcalls==1.3.2
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ffmpeg \
